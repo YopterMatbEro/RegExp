@@ -2,8 +2,7 @@ from pprint import pprint
 import re
 # Читаем адресную книгу в формате CSV в список contacts_list:
 import csv
-from operations import correction2, correction_of_contacts, elimination_of_duplicates
-
+from operations import correction2
 
 def main():
     with open("phonebook_raw.csv", encoding='utf-8') as f:
@@ -11,12 +10,9 @@ def main():
         contacts_list = list(rows)
     # pprint(contacts_list)
 
-    # 1. Выполните пункты 1-3 задания.      # переделать через .join()
-    correction2(contacts_list)
-    # changed_list = correction_of_contacts(contacts_list)  # исправление контактов
-    # changed_list = elimination_of_duplicates(changed_list)
+    # 1. Выполните пункты 1-3 задания.
+    correction2(contacts_list[1:])
 
-    # pprint(changed_list)
     # print(f'''{changed_list[0][0]:^20} | {changed_list[0][1]:^20} | {changed_list[0][2]:^20} | {changed_list[0][3]:^10}\
     #  | {changed_list[0][4]:^143} | {changed_list[0][5]:^27}| {changed_list[0][6]:^21}''')
     # print('+' + '-'*20 + '+' + '-'*22 + '+' + '-'*22 + '+' + '-'*18 + '+' + '-'*145 + '+' + '-'*28 + '+' + '-'*21)
