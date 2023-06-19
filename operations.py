@@ -6,7 +6,7 @@ def change_phone(id, id1, change_contacts_list, pattern, contacts_list, match):
         if change_contacts_list[id1][12]:  # добавочный номер
             subst_pattern = r"+7(\8)\9-\10-\11 \12.\13"
             change_contacts_list[id1][5] = pattern.sub(subst_pattern, contacts_list[id])
-            [change_contacts_list[id1].remove(match.group(i)) for i in [7, 8, 9, 10, 11]]
+            [change_contacts_list[id1].remove(match.group(i)) for i in [7, 8, 9, 10, 11, 12, 13]]
         else:
             subst_pattern = r"+7(\8)\9-\10-\11"
             change_contacts_list[id1][5] = pattern.sub(subst_pattern, contacts_list[id])
