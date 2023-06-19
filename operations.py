@@ -6,7 +6,7 @@ def change_phone(id, id1, change_contacts_list, pattern, contacts_list, match):
         if change_contacts_list[id1][12]:  # добавочный номер
             subst_pattern = r"+7(\8)\9-\10-\11 \12.\13"
             change_contacts_list[id1][5] = pattern.sub(subst_pattern, contacts_list[id])
-            [change_contacts_list[id1].remove(match.group(i)) for i in [7, 8, 9, 10, 11]]
+            [change_contacts_list[id1].remove(match.group(i)) for i in [7, 8, 9, 10, 11, 12, 13]]
         else:
             subst_pattern = r"+7(\8)\9-\10-\11"
             change_contacts_list[id1][5] = pattern.sub(subst_pattern, contacts_list[id])
@@ -45,8 +45,7 @@ def correction_of_contacts(contacts_list):
         # 2. добавляем, если совпадений нет
         else:  # [] - not id1
             change_contacts_list.append([*match.groups()])
-            # change_contacts_list.append([match.group(1), match.group(2), match.group(3), match.group(4), match.group(5),
-            #                              match.group(6), match.group(12), match.group(13), match.group(14)])
             change_phone(id, id - count, change_contacts_list, pattern, contacts_list, match)
+    change_contacts_list.insert(0, ['lastname', 'firstname', 'surname', 'organization', 'position', 'phone', 'email'])
 
     return change_contacts_list
